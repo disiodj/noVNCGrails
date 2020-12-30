@@ -68,5 +68,5 @@ class HandsetController {
 
         redirect(action: "index")
     }
-
+    def home(){}
 }

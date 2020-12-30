@@ -18,6 +18,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"com.bertramlabs.asset-pipeline"
+apply plugin:'asset-pipeline'
 
 repositories {
     maven { url "https://repo.grails.org/grails/core" }
@@ -32,6 +33,7 @@ configurations {
 
 dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    compile 'com.bertramlabs.plugins:typescript-asset-pipeline:3.2.3'
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
@@ -62,6 +64,8 @@ dependencies {
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
+    compile 'net.errbuddy.plugins:babel-asset-pipeline:2.1.1'
+    runtime "org.grails:grails-web-jsp:4.0.2"
 }
 
 bootRun {

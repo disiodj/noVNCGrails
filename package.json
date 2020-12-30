@@ -1,0 +1,19 @@
+{
+  "name": "crm_grails",
+  "version": "1.0.0",
+  "description": "> A simple customer management system built in Grails v4 to\r > demonstrate basic CRUD operations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/disiodj/noVNCGrails.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.co3m/disiodj/noVNCGrails/issues"
+  },
+  "homepage": "https://github.com/disiodj/noVNCGrails#readme"
+}

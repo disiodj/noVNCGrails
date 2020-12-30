@@ -1,0 +1,8 @@
+<div ng-if="1 < pages.length">
+
+	<div class="next_button" ng-click="setCurrent(pagination.current + 1)" ng-if="directionLinks"
+          	ng-class="{ disabled : pagination.current == pagination.last }">
+         <i class="fa fa-caret-right"></i>
+	</div>
+    
+</div>

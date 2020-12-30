@@ -1,0 +1,75 @@
+<div id="vnc-sms-history-panel" class="rightContent">
+
+    <div class="message_history_container">
+        <div class="message_history_search_vnc">
+            <div id="filters">
+                <div class="headline">Message History Filters</div>
+                <div class="filters">
+                    <div id="filter_days" dwbuttonset>
+                        <input type="radio" id="oneday" name="project" checked="checked" ng-click="selectDateFilterVnc('TODAY');">
+                        <label for="oneday">TODAY</label>
+                        <input type="radio" id="sevendays" name="project" ng-click="selectDateFilterVnc('7 DAYS');">
+                        <label for="sevendays">7 DAYS</label>
+                        <input type="radio" id="all" name="project" ng-click="selectDateFilterVnc('ALL');">
+                        <label for="all">ALL</label>
+                    </div>
+
+                    <div id="filter_dir" dwbuttonset>
+                        <input type="radio" id="dir_all" name="dirs" checked="checked" ng-click="selectDirectionVnc('ALL')">
+                        <label for="dir_all">ALL</label>
+                        <input type="radio" id="dir_in" name="dirs" ng-click="selectDirectionVnc('IN')">
+                        <label for="dir_in">INCOMING</label>
+                        <input type="radio" id="dir_out" name="dirs" ng-click="selectDirectionVnc('OUT')">
+                        <label for="dir_out">OUTGOING</label>
+                    </div>
+
+                    <div id="filter_app" dwbuttonset>
+                        <input type="radio" id="app_all" name="app" checked="checked" ng-click="selectApplicationVnc('ALL')">
+                        <label for="app_all">ALL</label>
+                        <input type="radio" id="app_tcui" name="app" ng-click="selectApplicationVnc('TCUI')">
+                        <label for="app_tcui">TCUI</label>
+                        <input type="radio" id="app_ditesto" name="app" ng-click="selectApplicationVnc('DITESTO')">
+                        <label for="app_ditesto">DITESTO</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message_history">
+            <div class="searchbar">
+                <input type="search" id="query" ng-model="textQueryVnc" placeholder="search" ng-change="updateVncTextQuery(textQueryVnc)" />
+            </div>
+            <div ng-repeat="sms in smsVncList |
+                    startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage ">
+                <div id="{{ 'message-' + sms.id}}" class="message">
+                    <div class="sms_info">
+
+                        <div class="sms_from">From: {{sms.from}}</div>
+                        <div class="sms_to">To: {{sms.to}}</div>
+                        <div class="sms_date">
+                            <i class="fa fa-clock-o"></i> {{sms.received | date : 'dd.MM.yyyy'}} {{sms.received | date : 'HH:mm:ss'}}
+                        </div>
+
+                    </div>
+                    <div class="sms_text"><label
+							class="sms_vnc_text_wrap"
+							bind-html-unsafe="'{{sms.message}}' | highlight:textQueryVnc"></label></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="message_pager">
+            <div class="back_button" ng-click="pagination.prevPage()">
+                <i class="fa fa-caret-left"></i>
+            </div>
+
+            <span ng-show="vncPaging != '0'">{{pagination.page + 1}}  / {{vncPaging}} </span>
+
+            <div class="next_button" ng-click="pagination.nextPage()">
+                <i class="fa fa-caret-right"></i>
+            </div>
+        </div>
+
+    </div>
+</div>

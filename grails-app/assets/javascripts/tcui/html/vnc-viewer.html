@@ -1,0 +1,147 @@
+<div id="noVNC-control-bar">
+
+	<!--noVNC Mobile Device only Buttons-->
+	<div class="noVNC-buttons-left" style="display: none;">
+		<input type="image" alt="viewport drag" src="img/vnc/drag.png"
+			   id="noVNC_view_drag_button" class="noVNC_status_button"
+			   title="Move/Drag Viewport">
+		<div id="noVNC_mobile_buttons">
+			<input type="image" alt="No mousebutton" src="img/vnc/mouse_none.png"
+				   id="noVNC_mouse_button0" class="noVNC_status_button"> <input
+				type="image" alt="Left mousebutton" src="img/vnc/mouse_left.png"
+				id="noVNC_mouse_button1" class="noVNC_status_button"> <input
+				type="image" alt="Middle mousebutton" src="img/vnc/mouse_middle.png"
+				id="noVNC_mouse_button2" class="noVNC_status_button"> <input
+				type="image" alt="Right mousebutton" src="img/vnc/mouse_right.png"
+				id="noVNC_mouse_button4" class="noVNC_status_button"> <input
+				type="image" alt="Keyboard" src="img/vnc/keyboard.png"
+				id="showKeyboard" class="noVNC_status_button" value="Keyboard"
+				title="Show Keyboard" />
+			<!-- Note that Google Chrome on Android doesn't respect any of these,
+                     html attributes which attempt to disable text suggestions on the
+                     on-screen keyboard. Let's hope Chrome implements the ime-mode
+                     style for example -->
+			<textarea id="keyboardinput" autocapitalize="off" autocorrect="off"
+					  autocomplete="off" spellcheck="false" mozactionhint="Enter"
+					  onsubmit="return false;" style="ime-mode: disabled;"></textarea>
+			<div id="noVNC_extra_keys">
+				<input type="image" alt="Extra keys" src="img/vnc/showextrakeys.png"
+					   id="showExtraKeysButton" class="noVNC_status_button"> <input
+					type="image" alt="Ctrl" src="img/vnc/ctrl.png" id="toggleCtrlButton"
+					class="noVNC_status_button"> <input type="image" alt="Alt"
+														src="img/vnc/alt.png" id="toggleAltButton"
+														class="noVNC_status_button"> <input type="image" alt="Tab"
+																							src="img/vnc/tab.png" id="sendTabButton" class="noVNC_status_button">
+				<input type="image" alt="Esc" src="img/vnc/esc.png"
+					   id="sendEscButton" class="noVNC_status_button">
+			</div>
+		</div>
+	</div>
+
+    <div id="noVNC_status_bar" class="noVNC_status_bar">
+        <div id="noVNC_status">Loading</div>
+    </div>
+
+	<!--noVNC Buttons-->
+	<div class="noVNC-buttons-right" style="display: none;">
+		<input type="image" alt="Ctrl+Alt+Del" src="img/vnc/ctrlaltdel.png"
+			   id="sendCtrlAltDelButton" class="noVNC_status_button"
+			   title="Send Ctrl-Alt-Del" /> <input type="image"
+												   alt="Shutdown/Reboot" src="img/vnc/power.png" id="xvpButton"
+												   class="noVNC_status_button" title="Shutdown/Reboot..." /> <input
+			type="image" alt="Clipboard" src="img/vnc/clipboard.png"
+			id="clipboardButton" class="noVNC_status_button" title="Clipboard" />
+		<!-- <input type="image" alt="Settings" src="img/vnc/settings.png"
+			id="settingsButton" class="noVNC_status_button" title="Settings" /> -->
+		<input type="image" alt="Connect" src="img/vnc/connect.png"
+			   id="connectButton" class="noVNC_status_button" title="Connect" /> <input
+			type="image" alt="Disconnect" src="img/vnc/disconnect.png"
+			id="disconnectButton" class="noVNC_status_button" title="Disconnect" />
+	</div>
+
+	<!-- Description Panel -->
+	<!-- Shown by default when hosted at for kanaka.github.com -->
+	<div id="noVNC_description" class="" style="display: none;">
+		<input id="descriptionButton" type="button" value="Close">
+	</div>
+
+	<!-- Popup Status Panel -->
+	<div id="noVNC_popup_status_panel" class=""></div>
+
+	<!-- Clipboard Panel -->
+	<div id="noVNC_clipboard" class="triangle-right top" style="display:none;">
+		<textarea id="noVNC_clipboard_text" rows=5>
+            </textarea>
+		<br /> <input id="noVNC_clipboard_clear_button" type="button"
+					  value="Clear">
+	</div>
+
+	<!-- XVP Shutdown/Reboot Panel -->
+	<div id="noVNC_xvp" class="triangle-right top" style="display: none;">
+		<span id="noVNC_xvp_menu"> <input type="button"
+										  id="xvpShutdownButton" value="Shutdown" /> <input type="button"
+																							id="xvpRebootButton" value="Reboot" /> <input type="button"
+																																		  id="xvpResetButton" value="Reset" />
+		</span>
+	</div>
+
+	<div class="btn-group pull-right" dropdown is-open="status.isopen" style="display: none;">
+		<button id="settingsButton"  type="button" class="btn btn-sm btn-default dropdown-toggle" ng-disabled="disabled">
+			Settings <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><input id="noVNC_encrypt" type="checkbox"> Encrypt</li>
+			<li><input id="noVNC_true_color" type="checkbox" checked>True Color</li>
+			<li><input id="noVNC_cursor" type="checkbox"> Local Cursor</li>
+			<li><input id="noVNC_clip" type="checkbox"> Clip to Window</li>
+			<li><input id="noVNC_shared" type="checkbox"> Shared Mode</li>
+			<li><input id="noVNC_view_only" type="checkbox"> View Only</li>
+			<li><input id="noVNC_path" type="text" value=""> Path</li>
+			<li><input id="noVNC_repeaterID" type="text" value=""> Repeater ID</li>
+			<li class="divider"></li>
+			<li>
+				<label>
+					<strong>Style: </strong>
+					<select id="noVNC_stylesheet" name="vncStyle">
+						<option value="default">default</option>
+					</select>
+				</label>
+			</li>
+			<li>
+				<label>
+					<strong>Logging: </strong>
+					<select id="noVNC_logging" name="vncLogging">
+					</select>
+				</label>
+			</li>
+			<li class="divider"></li>
+			<li><input type="button" id="noVNC_apply" value="Apply"></li>
+		</ul>
+	</div>
+
+	<!-- Connection Panel -->
+	<div id="noVNC_controls" class="">
+		<input type="text" id="noVNC_host" value="attest-testcenter.dimoco.at" style="display: none;"/>
+		<input type="hidden" id="noVNC_port" value="5911" style="display: none;"/>
+		<input type="hidden" id="noVNC_password" value="dim2014" style="display: none;"/>
+		<input id="noVNC_connect_button" type="button" value="Connect" style="display: none;">
+	</div>
+
+</div>
+
+
+<div id="noVNC_screen">
+
+	<!-- HTML5 Canvas -->
+	<div id="noVNC_container" style="text-align: center;">
+		<canvas id="noVNC_canvas" width="800px" height="600px">
+			Canvas not supported.
+		</canvas>
+	</div>
+	
+	<div id="noVNC_screen_pad" style="display: none;"></div>
+
+    <h1 id="noVNC_logo" style="display: none;">
+    </h1>
+
+</div>

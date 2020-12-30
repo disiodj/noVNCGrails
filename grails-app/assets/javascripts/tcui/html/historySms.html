@@ -1,0 +1,92 @@
+<div id="sms-history" class="message_history_container_sms">
+	<div id="sms-div" class="message_history_search">
+		<div id="filters-container">
+			<div class="headline">Message History Filters</div>
+			<div class="filters">
+				<div id="filter_days1" dwbuttonset>
+					<input type="radio" id="oneday1" name="project1" checked="checked" ng-click="selectDateFilter('TODAY');">
+					<label for="oneday1">TODAY</label>
+					<input type="radio" id="sevendays1" name="project1" ng-click="selectDateFilter('7 DAYS');">
+					<label for="sevendays1">7 DAYS</label>
+					<input type="radio" id="all1" name="project1" ng-click="selectDateFilter('ALL');">
+					<label for="all1">ALL</label>
+				</div>
+
+				<div id="filter_dir1" dwbuttonset>
+					<input type="radio" id="dir_all1" name="dirs1" checked="checked" ng-click="selectDirection('ALL')">
+					<label for="dir_all1">ALL</label>
+					<input type="radio" id="dir_in1" name="dirs1" ng-click="selectDirection('IN')">
+					<label for="dir_in1">INCOMING</label>
+					<input type="radio" id="dir_out1" name="dirs1" ng-click="selectDirection('OUT')">
+					<label for="dir_out1">OUTGOING</label>
+				</div>
+
+				<div id="filter_app1" dwbuttonset>
+					<input type="radio" id="app_all1" name="app1" checked="checked" ng-click="selectApplication('ALL')">
+					<label for="app_all1">ALL</label>
+					<input type="radio" id="app_tcui1" name="app1" ng-click="selectApplication('TCUI')">
+					<label for="app_tcui1">TCUI</label>
+					<input type="radio" id="app_ditesto1" name="app1" ng-click="selectApplication('DITESTO')">
+					<label for="app_ditesto1">DITESTO</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="paging_box">
+
+			<dir-pagination-controls></dir-pagination-controls>
+
+			<div class="refresh_btn">
+				<input type="button"
+					   class="ui-button ui-state-active ui-corner-all" value="Refresh" ng-click="fetchMessages();">
+			</div>
+			<div class="messagesOnPage">
+				<select class="form-control ui-corner-all" id="row-options" data-ng-options="o.text for o in rowOptions" ng-change="updateRowNum(selectedRowOption)" data-ng-model="selectedRowOption"></select>
+			</div>
+
+		</div>
+	</div>
+	<div class="message_history">
+		<div class="searchbar">
+			<input type="search" id="query" ng-model="textQuery" placeholder="search" />
+		</div>
+		<table class="message_table">
+			<tr class="ui-state-active">
+				<th class="time"><i class="fa fa-clock-o"></i> Time</th>
+				<th class="mobile_received"><i class="fa fa-clock-o"></i> Mobile received</th>
+				<th class="direction"><i class="fa fa-exchange"></i>
+					Direction</th>
+				<th class="from"><i class="fa fa-long-arrow-right"></i> From</th>
+				<th class="to"><i class="fa fa-long-arrow-left"></i> To</th>
+				<th class="smsText"><i class="fa fa-envelope"></i> Message</th>
+			</tr>
+			<tr id="{{ 'message' + sms.id}}" dir-paginate="sms in smsList | filter:{message:textQuery} | itemsPerPage: messagesPerPage.value">
+				<td class="time">{{sms.received | date :
+					'dd.MM.yyyy'}} {{sms.received | date :
+					'HH:mm:ss'}}</td>
+				<td class="mobile_received">{{ sms.mobileReceived | date : 'dd.MM.yyyy' }} {{ sms.mobileReceived | date : 'HH:mm:ss' }}</td>
+				<td class="direction"><span
+						ng-show="sms.direction == 'incoming'">IN</span> <span
+						ng-show="sms.direction == 'outgoing'">OUT</span></td>
+				<td class="sms-from">{{sms.from}}</td>
+				<td class="sms-to">{{sms.to}}</td>
+				<td class="sms-text"><label
+						class="text-muted sms_text_wrap"
+						bind-html-unsafe="'{{sms.message}}' | highlight:textQuery"></label>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="message_pager">
+		<dir-pagination-controls template-url="js/app/directives/dirPaginationOnlyLeftArrow.tpl.html"></dir-pagination-controls>
+                <span class="message_pager_info">
+                	<small>Number of messages: <span>{{smsList.length}}</span></small>
+					<small>Updated at: <strong>{{previousRefresh | date : 'HH:mm:ss'}}</strong></small><small> Timezone: <strong>CET</strong></small>
+					<small style="margin-right: 10px;">(Interval: <strong>{{settingsConfig.refreshInterval}} seconds</strong> )</small>
+				</span>
+		<dir-pagination-controls class="navigation-right-arrow" template-url="js/app/directives/dirPaginationOnlyRightArrow.tpl.html"></dir-pagination-controls>
+	</div>
+</div>
+
+
+

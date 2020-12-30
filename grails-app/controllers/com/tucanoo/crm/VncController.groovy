@@ -6,4 +6,11 @@ class VncController {
 
     def blackButton() {
     }
+    def experiments(){
+    }
+    def vnc_lite(){
+
+    }
+    def home(){}
+
 }
