@@ -16,8 +16,6 @@ class VncController {
 
     }
     def home(){}
-
-
     List<Object> testcenters() {
         try {
             return ["testcenter1","testcenter2"]
@@ -26,4 +24,6 @@ class VncController {
             return new ArrayList<>();
         }
     }
+    def vncConnection2014(){}
+    def vncConnection2021(){}
 }

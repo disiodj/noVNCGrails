@@ -21,7 +21,8 @@
     <p class="mt-5"><a href="/vnc/vnc_lite" class="btn btn-primary btn-block">VNC_LITe</a></p>
     <p class="mt-5"><a href="/vnc/experiments" class="btn btn-primary btn-block">Experiments</a></p>
     <p class="mt-5"><a href="/vnc/home" class="btn btn-primary btn-block">Home vnc</a></p>
-    <p class="mt-5"><a href="/handset/home" class="btn btn-primary btn-block">Handset home</a></p>
+    <p class="mt-5"><a href="/vnc/vncConnection2014" class="btn btn-primary btn-block">VNC 2014</a></p>
+    <p class="mt-5"><a href="/vnc/vncConnection2021" class="btn btn-primary btn-block">VNC 2021</a></p>
 
 </div>
 <footer class="footer navbar-dark bg-dark fixed-bottom">

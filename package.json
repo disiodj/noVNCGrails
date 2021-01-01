@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.co3m/disiodj/noVNCGrails/issues"
   },
-  "homepage": "https://github.com/disiodj/noVNCGrails#readme"
+  "homepage": "https://github.com/disiodj/noVNCGrails#readme",
+  "dependencies": {
+    "uniq": "^1.0.1"
+  }
 }
