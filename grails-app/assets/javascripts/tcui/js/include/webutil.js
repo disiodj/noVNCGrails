@@ -17,7 +17,7 @@ var WebUtil = {}, $D;
  * Simple DOM selector by ID
  */
 if (!window.$D) {
-    window.$D = function (id) {
+    $D = function (id) {
         if (document.getElementById) {
             return document.getElementById(id);
         } else if (document.all) {
@@ -30,7 +30,7 @@ if (!window.$D) {
 }
 
 
-/* 
+/*
  * ------------------------------------------------------
  * Namespaced in WebUtil
  * ------------------------------------------------------
@@ -41,7 +41,7 @@ WebUtil.init_logging = function() {
     Util._log_level = (document.location.href.match(
          /logging=([A-Za-z0-9\._\-]*)/) ||
          ['', Util._log_level])[1];
-    
+
     Util.init_logging();
 };
 WebUtil.init_logging();
@@ -52,9 +52,9 @@ WebUtil.dirObj = function (obj, depth, parent) {
     if (! depth) { depth=2; }
     if (! parent) { parent= ""; }
 
-    // Print the properties of the passed-in object 
+    // Print the properties of the passed-in object
     for (i in obj) {
-        if ((depth > 1) && (typeof obj[i] === "object")) { 
+        if ((depth > 1) && (typeof obj[i] === "object")) {
             // Recurse attributes that are objects
             msg += WebUtil.dirObj(obj[i], depth-1, parent + "." + i);
         } else {
@@ -66,7 +66,7 @@ WebUtil.dirObj = function (obj, depth, parent) {
             }
             if (val.length > 30) {
                 val = val.substr(0,30) + "...";
-            } 
+            }
             msg += parent + "." + i + ": " + val + "\n";
         }
     }
@@ -136,7 +136,7 @@ WebUtil.selectStylesheet = function(sheet) {
     }
     for (i=0; i < sheets.length; i += 1) {
         link = sheets[i];
-        if (link.title === sheet) {    
+        if (link.title === sheet) {
             Util.Debug("Using stylesheet " + sheet);
             link.disabled = false;
         } else {

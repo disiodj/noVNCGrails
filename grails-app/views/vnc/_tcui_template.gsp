@@ -25,9 +25,9 @@
 
 <%-- Header service integration, must be imported right after jquery--%>
 <asset:javascript src="https://static.dimoco.at/js/header-service.js"/>
-<script type="text/javascript">
-    headerServiceClient.header.get("TCUI", "${tcuiEnvironment}");
-</script>
+%{--<script type="text/javascript">--}%
+%{--    headerServiceClient.header.get("TCUI", "${tcuiEnvironment}");--}%
+%{--</script>--}%
 
 <asset:javascript src="/tcui/css/dimoco-theme/jquery-ui.js"/>
 
